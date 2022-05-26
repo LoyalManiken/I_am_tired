@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
+
+<profiles>
+    <profile>
+      <id>development</id>
+      <properties>
+          <appender-name>CONSOLE</appender-name>
+      </properties>
+    </profile>
+    <profile>
+      <id>file_log</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+          <appender-name>FILE</appender-name>
+      </properties>
+    </profile>
+  </profiles>
+
+<Loggers>
+        <Root level="all">
+            <AppenderRef ref="${appender-name}"/> 
+        </Root>
+    </Loggers>
